@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Post(models.Model):
@@ -10,10 +11,22 @@ class Post(models.Model):
             default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
+    like = models.BooleanField(default=False)
 
     def publish(self):
         self.published_date = timezone.now()
         self.save()
+
+    def liked(self):
+        self.like = True
+        self.save()
+
+    def disliked(self):
+        self.like = False
+        self.save()
+
+    def approved_comments(self):
+        return self.comments.filter(approved_comment=True)
 
     def __str__(self):
         return self.title
