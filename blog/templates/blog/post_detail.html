@@ -18,9 +18,11 @@
     </div>
 
     <hr>
+    <p> Количество лайков: {{ number_of_likes }}</p>
+    <p> Количество просмотров: {{ number_of_views }}</p>
     <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 
-    {% if not post.like %}
+    {% if is_like is False %}
         <a class="btn btn-default" href="{% url 'add_like' pk=post.pk %}"><span class="glyphicon glyphicon-heart-empty"></span></a>
     {% else %}
         <a class="btn btn-default" href="{% url 'add_dislike' pk=post.pk %}"><span class="glyphicon glyphicon-heart"></span></a>

@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^comment/(?P<pk>\d+)/remove/$', views.comment_remove, name='comment_remove'),
     url(r'^post/(?P<pk>\d+)/like/$', views.add_like, name='add_like'),
     url(r'^post/(?P<pk>\d+)/dislike/$', views.add_dislike, name='add_dislike'),
+    url(r'^post/favorites/$', views.favorites, name='post_favorites'),
 ]
